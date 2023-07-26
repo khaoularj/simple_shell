@@ -17,9 +17,7 @@ int cmd_interpreter(char **envp)
 		{
 			exit(EXIT_FAILURE);
 		}
-
 		pid = fork();
-
 		if (pid == 0)
 		{
 			execve(args[0], args, envp);
@@ -43,7 +41,7 @@ int cmd_interpreter(char **envp)
 				}
 			}
 			perror(args[0]);
-			_exit(EXIT_FAILURE);
+			_exit(EXIT_SUCCESS);
 		}
 		else
 		{
