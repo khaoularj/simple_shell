@@ -1,12 +1,12 @@
 #include "shell.h"
 /**
  * cmd_interpreter - the function that interprete the input command
+ * @envp: the environment variables
  * Return:0
  */
-int cmd_interpreter(void)
+int cmd_interpreter(char **envp)
 {
 	int status = 0;
-	char *buffer = NULL;
 	pid_t pid;
 
 	while (1)
@@ -22,17 +22,28 @@ int cmd_interpreter(void)
 
 		if (pid == 0)
 		{
-			int val = execve(args[0], args, NULL);
+			execve(args[0], args, envp);
 
-			if (val == -1)
+			if (args[0][0] != '/' && args[0][0] != '.')
 			{
-				perror("./hsh");
-				_exit(EXIT_FAILURE);
+				char *path = getenv("PATH");
+
+				if (path != NULL)
+				{
+					char *dir = strtok(path, ":");
+
+					while (dir != NULL)
+					{
+						char *full_path = _get_path(dir, args[0]);
+
+						execve(full_path, args, envp);
+						free(full_path);
+						dir = strtok(NULL, ":");
+					}
+				}
 			}
-		}
-		else if (pid == -1)
-		{
-			perror("fork failed");
+			perror(args[0]);
+			_exit(EXIT_FAILURE);
 		}
 		else
 		{
@@ -40,6 +51,5 @@ int cmd_interpreter(void)
 			free(args);
 		}
 	}
-	free(buffer);
 	return (0);
 }

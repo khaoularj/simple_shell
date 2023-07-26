@@ -14,10 +14,12 @@
 #include <stdarg.h>
 #include <stdbool.h>
 
+char *_get_path(char *dir, char *fname);
 char **display_prompt(void);
-int cmd_interpreter(void);
+int cmd_interpreter(char **envp);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
-extern char **environ;
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
 
 #endif

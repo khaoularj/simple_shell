@@ -1,10 +1,15 @@
 #include "shell.h"
 /**
  * main - the main hsh function
+ * @argc:argument count
+ * @argv:argument vector
+ * @envp:environment
  *Return: 0
  */
-int main(void)
+int main(int argc, char *argv[], char **envp)
 {
-	cmd_interpreter();
+	(void)argc;
+	(void)argv;
+	cmd_interpreter(envp);
 	return (0);
 }
