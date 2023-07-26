@@ -13,11 +13,10 @@ int cmd_interpreter(void)
 	{
 		char **args = display_prompt();
 
-		/*if (_strcmp(args[0], "exit") == 0 && args[1] == NULL)
+		if (_strcmp(args[0], "exit") == 0)
 		{
 			exit(EXIT_FAILURE);
 		}
-		*/
 
 		pid = fork();
 
