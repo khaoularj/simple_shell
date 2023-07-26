@@ -26,7 +26,7 @@ int cmd_interpreter(void)
 
 			if (val == -1)
 			{
-				perror(args[0]);
+				perror("./hsh");
 				_exit(EXIT_FAILURE);
 			}
 		}
