@@ -17,6 +17,7 @@ char **display_prompt(void)
 	{
 		write(1, "$ ", 2);
 	}
+
 	n_char = getline(&buffer, &buffer_size, stdin);
 
 	if (n_char == EOF)
@@ -26,19 +27,17 @@ char **display_prompt(void)
 	else
 	{
 		buffer[n_char - 1] = '\0';
-
 		args = malloc(sizeof(char *) * _strlen(buffer));
 
 		token = strtok(buffer, " \t\n");
-
+		
 		while (token)
 		{
 			args[i] = token;
 			token = strtok(NULL, " \t\n");
 			i++;
 		}
-		/*set the last element of the array to NULL to mark the end*/
 		args[i] = NULL;
 	}
-	return (args);
+	return(args);
 }

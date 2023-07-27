@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * hsh - the main hsh function
+ * main - the main hsh function
  * @argc:argument count
  * @argv:argument vector
  * @envp:environment

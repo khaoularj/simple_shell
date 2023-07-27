@@ -15,7 +15,7 @@ int cmd_interpreter(char **envp)
 
 		if (_strcmp(args[0], "exit") == 0)
 		{
-			exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
 		}
 		pid = fork();
 		if (pid == 0)
@@ -49,5 +49,5 @@ int cmd_interpreter(char **envp)
 			free(args);
 		}
 	}
-	return (0);
+		return(0);
 }
