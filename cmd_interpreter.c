@@ -13,9 +13,17 @@ int cmd_interpreter(char **envp)
 	{
 		char **args = display_prompt();
 
+		if (args[0] == NULL)
+		{
+			free(args);
+			continue;
+		}
+
 		if (_strcmp(args[0], "exit") == 0)
 		{
-			exit(EXIT_SUCCESS);
+			/*exit(EXIT_SUCCESS);*/
+			free(args);
+			break;
 		}
 		pid = fork();
 		if (pid == 0)
