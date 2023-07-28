@@ -18,13 +18,4 @@ void commentRmv(char *bff)
 			bff[j] = '\0';
 			break;
 		}
-}#include "shell.h"
-
-
-/**
- * commentRmv - is a function to remove comment
- * by replacing this '#' with '\0';
- * @bff: is a bff of a target string (comment);
- *
- * Return: value 0 for success.
- */
+}
